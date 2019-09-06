@@ -7,6 +7,9 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import Breadcrumb from './lib/Breadcrumb';
 
+//TODO(PPavlov): Add Prop Types
+//TODO(PPavlov): Continue from Card
+
 const Buttons = (
   <React.Fragment>
     <Button type="primary">Primary</Button>

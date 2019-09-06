@@ -2,10 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
-const components = {
-    span: 'span',
-    Link
-}
+const components = { span: 'span', Link }
 
 const Badge = ({ type, size, pill, className, children, element, ...other }) => {
     const Element = components[element] || components.span;
