@@ -10,23 +10,21 @@ const CloseBtn = ({ onClose }) => {
     )
 }
 
-const Alert = ({ type, className, children, dismissible, onClose, ...other }) => {
+const Alert = ({ variant, className, children, dismissible, onClose, ...other }) => {
     return (
-        <div
-            className={classnames('alert', 'alert-' + type, className, {
-                'alert-dismissible': dismissible
-            })}
-            {...other}
-        >
+        <div className={classnames('alert', className, {
+            [`alert-${variant}`]: !!variant,
+            'alert-dismissible': !!dismissible
+        })} {...other} >
             {dismissible && <CloseBtn onClose={onClose}></CloseBtn>}
             {children}
         </div>
     );
 }
 
-Alert.Link = ({ className, children, ...other }) => {
+Alert.Link = ({ to, className, children, ...other }) => {
     return (
-        <Link className={classnames('alert-link', className)}
+        <Link to={to} className={classnames('alert-link', className)}
             {...other}
         >
             {children}

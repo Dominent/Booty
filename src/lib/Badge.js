@@ -2,15 +2,15 @@ import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
-const components = { span: 'span', Link }
+const components = { span: 'span', Link: Link }
 
-const Badge = ({ type, size, pill, className, children, element, ...other }) => {
+const Badge = ({ variant, size, pill, className, children, element, ...other }) => {
     const Element = components[element] || components.span;
 
     return (
         <Element className={classnames('badge', className, {
             ['badge-' + size]: !!size,
-            ['badge-' + type]: !!type,
+            ['badge-' + variant]: !!variant,
             'badge-pill': pill
         })}
             {...other}

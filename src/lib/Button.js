@@ -1,16 +1,27 @@
 import React from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Button = ({ type, className, children, ...other }) => {
+//TODO(PPavlov): Rename everywhere type to variant
+const Button = ({ variant, element, className, children, ...other }) => {
+    const components = { button: 'button', input: 'input', Link: Link }
+    const Element = components[element] || components.button;
+
     return (
-        <button
-            type="button"
-            className={classnames('btn', 'btn-' + type, className)}
-            {...other}
-        >
+        <Element className={classnames('btn', className, {
+            [`btn-${variant}`]: !!variant
+        })} {...other} >
             {children}
-        </button>
+        </Element>
     );
+}
+
+Button.propTypes = {
+    element: PropTypes.oneOf(['button', 'input', 'Link']),
+    variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']),
+    className: PropTypes.string,
+    children: PropTypes.node.isRequired
 }
 
 Button.Group = ({ size, vertical, children, className, ...other }) => {
